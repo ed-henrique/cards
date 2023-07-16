@@ -1,8 +1,11 @@
 package main
 
 func main() {
-	var cards deck
-	cards = cards.new()
+	cards := newDeck()
+	cards.print()
 
+	hand, cards := deal(cards, 5)
+
+	hand.print()
 	cards.print()
 }

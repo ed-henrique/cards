@@ -4,18 +4,22 @@ import "fmt"
 
 type deck []string
 
-func (d deck) new() deck {
+func newDeck() deck {
 	cards := deck{}
-	suits := deck{"Clubs", "Diamonds", "Spades", "Hearts"}
-	values := deck{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
+	cardSuits := []string{"Clubs", "Diamonds", "Spades", "Hearts"}
+	cardValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
 
-	for _, suit := range suits {
-		for _, value := range values {
+	for _, suit := range cardSuits {
+		for _, value := range cardValues {
 			cards = append(cards, value+" of "+suit)
 		}
 	}
 
 	return cards
+}
+
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
 }
 
 func (d deck) print() {
