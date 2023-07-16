@@ -1,21 +1,28 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-// If the function returns something, it should follow this structure
-//
-// func FUNCTION_NAME(PARAMETERS) RETURN_TYPE {}
-func newCard() string {
-	return "Five of Diamonds"
+func newDeck() []string {
+	deck := []string{}
+	suits := [4]string{"Clubs", "Diamonds", "Spades", "Hearts"}
+	values := [13]string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
+
+	for _, suit := range suits {
+		for _, value := range values {
+			deck = append(deck, value+" of "+suit)
+		}
+	}
+
+	return deck
 }
 
-// Also, there is no need to import other go files if they are part of the
-// same package.
+func printDeck(deck []string) {
+	for _, card := range deck {
+		fmt.Println(card)
+	}
+}
 
 func main() {
-	card := newCard()
-
-	fmt.Println(card)
+	deck := newDeck()
+	printDeck(deck)
 }
